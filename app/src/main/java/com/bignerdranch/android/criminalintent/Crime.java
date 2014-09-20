@@ -1,7 +1,9 @@
 package com.bignerdranch.android.criminalintent;
 
-import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.UUID;
+import java.util.Date;
 
 /**
  * Created by Muaz on 9/6/14.
@@ -11,13 +13,13 @@ public class Crime {
     private UUID mId;
     private String mTitle;
 
-    private Date mDate;
+    private DateFormat mDate;
     private Boolean mSolved;
 
     public Crime(){
         //Generate unique identifier
         mId = UUID.randomUUID();
-        mDate = new Date();
+        mDate = new SimpleDateFormat("EEEE, MMM dd, yyyy.");
     }
 
     @Override
@@ -37,11 +39,11 @@ public class Crime {
         this.mTitle = Title;
     }
 
-    public Date getDate() {
-        return mDate;
+    public String getDate() {
+        return mDate.format(new Date());
     }
 
-    public void setDate(Date mDate) {
+    public void setDate(DateFormat mDate) {
         this.mDate = mDate;
     }
 
